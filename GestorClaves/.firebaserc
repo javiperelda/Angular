@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "angularfire-d57b9": {
+      "hosting": {
+        "cursoangular": [
+          "angularfire-d57b9"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "angularfire-d57b9"
+  }
+}

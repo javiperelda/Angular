@@ -1,0 +1,146 @@
+<!-- <div class="alert alert-warning" role="alert" *ngFor="let item of items">
+    {{item.name}} - {{item.id}}
+    
+    <div class="float-right" (click)="eliminar(item)">
+        <i class="far fa-trash-alt"></i>
+    </div>
+    <div class="float-right mx-2" data-toggle="modal" data-target="#exampleModal" (click)="editar(item)">
+        <i class="far fa-edit"></i>
+    </div>
+</div> -->
+
+<!-- <div class="container mt-5 float-right">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="alert alert-warning" role="alert" *ngFor="let item of items">
+        {{item.name}} - {{item.id}}
+
+        <div class="float-right" (click)="eliminar(item)">
+          <i class="far fa-trash-alt"></i>
+        </div>
+        <div class="float-right mx-2" data-toggle="modal" data-target="#exampleModal" (click)="editar(item)">
+          <i class="far fa-edit"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container mt-3 float-left">
+    <button class="btn btn-dark mt-3" [routerLink]="['/add']">Agregar</button>
+  </div>
+</div> -->
+
+<div class="container mt-3 text-right">
+  <!-- <button class="btn btn-dark mt-3 fas fa-puzzle-piece" [routerLink]="['/add']"></button> -->
+  <button class="btn btn-dark mt-3 fas fa-puzzle-piece" data-toggle="modal" data-target="#exampleModalInsert" (click)="agregar()"></button>
+</div>
+
+<div class="container mt-1">
+  <table class="table table-striped">
+    <thead class="thead-dark">
+      <tr>
+        <th class="text-center" scope="col">Usuario</th>
+        <th class="text-center" scope="col">Password</th>
+        <th class="text-center" scope="col">Descripción</th>
+        <th class="text-center" scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of items">
+        <td class="text-center">{{item.name}}</td>
+        <td class="text-center">{{item.pass}}</td>
+        <td class="text-center">{{item.descrip}}</td>
+        <td>
+          <div class="float-right" (click)="eliminar(item)">
+            <i class="far fa-trash-alt"></i>
+          </div>
+          <div class="float-right mx-2" data-toggle="modal" data-target="#exampleModal" (click)="editar(item)">
+            <i class="far fa-edit"></i>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+<!-- Modal Editar-->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <!-- <h5 class="modal-title" id="exampleModalLabel">Editar: {{editarItem.name}}</h5> -->
+        <h5 class="modal-title" id="exampleModalLabel">Editar:</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form (ngSubmit)="agregarItemEditado()">
+          <input type="text" placeholder="Edita Usuario" name="name" class="form-control" [(ngModel)]="editarItem.name">
+          <div class="mt-2">
+            <input type="text" placeholder="Edita Password" name="pass" class="form-control"
+              [(ngModel)]="editarItem.pass">
+          </div>
+          <div class="mt-2">
+            <input type="text" placeholder="Edita Descripción" name="descrip" class="form-control"
+              [(ngModel)]="editarItem.descrip">
+          </div>        
+          <td>
+            <div class="float-left" data-toggle="tooltip" title="Editar">
+              <button class="btn btn-dark mt-3 fas fa-edit" type="submit"></button>
+            </div>
+            <!-- <div class="float-right mx-2" data-toggle="tooltip" title="Limpiar campos">
+                <button class="btn btn-dark mt-3 fas fa-broom"></button>                
+            </div> -->
+        </td>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-dark fas fa-times-circle" data-dismiss="modal" data-toggle="tooltip" title="Cerrar"></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Agregar-->
+<div class="modal fade" id="exampleModalInsert" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <!-- <h5 class="modal-title" id="exampleModalLabel">Editar: {{editarItem.name}}</h5> -->
+        <h5 class="modal-title" id="exampleModalLabel">Nuevo:</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form (ngSubmit)="agregar()">
+          <input type="text" placeholder="Usuario" name="name" class="form-control" [(ngModel)]="item.name">
+          <div class="mt-2">
+            <input type="text" placeholder="Password" name="pass" class="form-control"
+              [(ngModel)]="item.pass">
+          </div>
+          <div class="mt-2">
+            <input type="text" placeholder="Descripción" name="descrip" class="form-control"
+              [(ngModel)]="item.descrip">
+          </div>        
+          <td>
+            <div class="float-left" data-toggle="tooltip" title="Agregar">
+              <button class="btn btn-dark mt-3 fas fa-plus-circle" type="submit"></button>
+            </div>
+            <!-- <div class="float-right mx-2" data-toggle="tooltip" title="Limpiar campos">
+                <button class="btn btn-dark mt-3 fas fa-broom"></button>                
+            </div> -->
+        </td>
+        </form>
+      </div>
+      <div class="modal-footer">    
+        <button type="button" class="btn btn-dark fas fa-times-circle" data-dismiss="modal" data-toggle="tooltip" title="Cerrar"></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+

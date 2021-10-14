@@ -1,0 +1,49 @@
+<!-- <div class="container mt-3 float-right">
+    <div class="row">
+        <div class="col-md-6">
+            <form>
+                <div class="mt-2">
+                    <input type="text" placeholder="Usuario" name="user" class="form-control">
+                </div>
+                <div class="mt-2">
+                    <input type="text" placeholder="Password" name="pass" class="form-control">
+                </div>
+                <td>
+                    <div class="float-left">
+                        <button class="btn btn-dark mt-2 fas fa-plus-circle" type="submit"></button>
+                    </div>
+                    <div class="float-right mx-2">
+                        <button class="btn btn-dark mt-2 fas fa-arrow-circle-left"></button>
+                    </div>
+                </td>
+                <div class="form-group">
+                    <button class="btn btn-dark mt-2 fab fa-facebook"></button>
+
+                    <div class="float-right mx-2">
+                        <button class="btn btn-dark mt-2 fab fa-google" (click)="onLoginGoogle()"></button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+     -->
+<div class="container mt-5 col-md-3 text-center">
+    <form class="form-signin" (submit)="onLogin()">
+        <img class="mb-4" src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">                
+        <h1 class="h3 mb-3 font-weight-normal">Login</h1>        
+        <input [(ngModel)]="email" type="email" name="user" class="form-control" placeholder="Usuario" required autofocus>
+        <input [(ngModel)]="pass" type="password" name="pass" class="mt-2 form-control" placeholder="Password" required>
+        <div class="checkbox mb-3">
+            <!-- <label>
+                <input type="checkbox" value="remember-me"> Remember me
+            </label> -->
+        </div>
+        <button class="btn btn-lg btn-dark btn-block" type="submit">Aceptar</button>
+        <div class="form-group mt-5">
+            <span class="btnrsg fab fa-facebook" (click)="onLoginFacebook()"></span>
+            <span class="btnrsg fab fa-google mx-2" (click)="onLoginGoogle()"></span>
+        </div>
+        <p class="mt-5 mb-3 text-muted">&copy; JP </p>
+    </form>
+</div>
